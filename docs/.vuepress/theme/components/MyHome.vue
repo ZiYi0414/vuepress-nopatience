@@ -37,6 +37,11 @@ export default {
         },
         {
           key: 3,
+          link: "/rss",
+          title: "RSS",
+        },
+        {
+          key: 4,
           link: "/about",
           title: "About",
         },
@@ -68,6 +73,7 @@ section.splash
     width: 100%
     height: 100%
   .body
+    background: url('../public/ceekwa.jpg')
     background-size: cover
     background-position: center
     width: 100%

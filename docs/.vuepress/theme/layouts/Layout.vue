@@ -7,7 +7,7 @@
   >
     <!-- <Home v-if="$page.frontmatter.home" /> -->
     <MyHome v-if="$page.frontmatter.home" />
-
+    <Blog v-if="$page.frontmatter.blog" />
     <Page v-else :sidebar-items="sidebarItems">
       <template #top>
         <slot name="page-top" />
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import Home from "@theme/components/Home.vue";
 import MyHome from "@theme/components/MyHome.vue";
+import Blog from "@theme/components/Blog.vue";
 import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
@@ -31,8 +31,8 @@ export default {
   name: "Layout",
 
   components: {
-    Home,
     MyHome,
+    Blog,
     Page,
     Sidebar,
     Navbar,
@@ -63,7 +63,9 @@ export default {
     shouldShowSidebar() {
       const { frontmatter } = this.$page;
       return (
-        !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length
+        !frontmatter.home &&
+        frontmatter.sidebar !== false &&
+        this.sidebarItems.length
       );
     },
 

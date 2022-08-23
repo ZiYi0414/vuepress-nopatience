@@ -2,7 +2,11 @@
   <div class="wrap">
     <PageHeader />
     <main>
-      <router-link v-for="item in articleList" :key="item?.key" :to="item?.path">
+      <router-link
+        v-for="item in articleList"
+        :key="item?.key"
+        :to="item?.path"
+      >
         <article>
           <header>
             <h3>{{ item?.frontmatter?.title }}</h3>
@@ -12,7 +16,9 @@
             {{ item?.frontmatter?.description }}
           </p>
           <div class="tag-list">
-            <span v-for="tag in item?.frontmatter?.tags" :key="tag">{{ tag }}</span>
+            <span v-for="tag in item?.frontmatter?.tags" :key="tag">{{
+              tag
+            }}</span>
           </div>
         </article>
       </router-link>
@@ -64,8 +70,8 @@ export default {
 
 <style lang="stylus" scoped>
 .wrap {
-  width: 90%;
-  max-width: 42rem;
+  padding: 2rem 2.5rem;
+  max-width: 46.5rem;
   margin-left: auto;
   margin-right: auto;
   main {

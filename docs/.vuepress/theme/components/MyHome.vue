@@ -1,22 +1,26 @@
 <template>
   <MouseParallax>
     <section class="splash" slot="parallax">
-      <section data-prax class="body">
-        <!-- <img data-prax :src="ceekwa" class="background-img" /> -->
-        <section class="shadow">
-          <section data-prax="0.3"  class="content">
-            <h1 class="title">NoPatience</h1>
-            <nav>
-              <div v-for="item in link" :key="item.key">
-                <a :href="item.link" target="_blank" v-if="item.outside">{{
-                  item.title
-                }}</a>
-                <router-link v-else :to="item.link">{{ item.title }}</router-link>
-              </div>
-            </nav>
+      <div class="parallax-wrap" data-prax>
+        <section data-prax="0.2" class="body">
+          <!-- <img data-prax :src="ceekwa" class="background-img" /> -->
+          <section class="shadow">
+            <section data-prax="0.4" class="content">
+              <h1 class="title">NoPatience</h1>
+              <nav>
+                <div v-for="item in link" :key="item.key">
+                  <a :href="item.link" target="_blank" v-if="item.outside">{{
+                    item.title
+                  }}</a>
+                  <router-link v-else :to="item.link">{{
+                    item.title
+                  }}</router-link>
+                </div>
+              </nav>
+            </section>
           </section>
         </section>
-      </section>
+      </div>
     </section>
   </MouseParallax>
 </template>
@@ -85,18 +89,24 @@ export default {
 <style lang="stylus" scoped>
 
 section.splash
-  width: 100vw
+  width: 100%
   height: 100vh
+  overflow: hidden
+  .parallax-wrap
+    height: 100%
   .shadow
     background-color: rgba(0, 0, 0, 0.7)
     width: 100%
     height: 100%
   .body
-    background: url('../public/ceekwa.jpg')
+    position: absolute
+    top : -15%
+    left: -10%
+    background: url('../public/1.png')
     background-size: cover
-    background-position: center
-    width: 100%
-    height: 100%
+    background-position-x: 50%
+    width: 120%
+    height: 115%
   .content
     font-family: Comfortaa,source sans pro,Ubuntu,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Source Han Sans CN,Source Han Sans SC,Microsoft YaHei,Wenquanyi Micro Hei,WenQuanYi Zen Hei,ST Heiti,SimHei,WenQuanYi Zen Hei Sharp,Arial,sans-serif
     width: 100%
@@ -108,7 +118,7 @@ section.splash
     .title
       margin-bottom: 1.4rem
       color: rgba(255, 255, 255, 0.8)
-      font-size: 3rem
+      font-size: 3.5rem
     .subtitle
       margin-bottom: 1rem
       color: rgba(255, 255, 255, 0.7)

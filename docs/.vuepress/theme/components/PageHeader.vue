@@ -3,25 +3,23 @@
     <div class="back" @click="goBack">
       <img src="../public/RUNOOB.png" alt="返回上一页" />
     </div>
-    <RouterLink  to="/"> NoPatience </RouterLink>
+    <RouterLink to="/"> NoPatience </RouterLink>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'PageHeader',
+  name: "PageHeader",
   methods: {
-   goBack() {
-    this.$router.go(-1)
-   }
+    goBack() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
 
 <style lang="css" scoped>
 .top {
-  padding: 2rem 0;
   display: flex;
   justify-content: space-between;
 }

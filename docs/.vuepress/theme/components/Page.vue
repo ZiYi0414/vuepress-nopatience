@@ -31,5 +31,6 @@ export default {
   display block
 .header-wrap
   max-width: 46.25rem
+  padding: 2rem 2.5rem;
   margin: 0 auto
 </style>

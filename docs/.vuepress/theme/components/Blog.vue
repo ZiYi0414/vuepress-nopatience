@@ -1,15 +1,22 @@
 <template>
-  <main>
-    <article v-for="item in articleList" :key="item?.key">
-      <header>
-        <h3>{{ item?.frontmatter?.title }}</h3>
-        <small>{{ item?.frontmatter?.date }}</small>
-      </header>
-      <p>
-        {{ item?.frontmatter?.description }}
-      </p>
-    </article>
-  </main>
+  <div class="wrap">
+    <main>
+      <router-link v-for="item in articleList" :key="item?.key" :to="item?.path">
+        <article>
+          <header>
+            <h3>{{ item?.frontmatter?.title }}</h3>
+            <small>{{ item?.frontmatter?.date }}</small>
+          </header>
+          <p>
+            {{ item?.frontmatter?.description }}
+          </p>
+          <div class="tag-list">
+            <span v-for="tag in item?.frontmatter?.tags" :key="tag">{{ tag }}</span>
+          </div>
+        </article>
+      </router-link>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -23,6 +30,7 @@ export default {
   },
   methods: {
     getArticleFn: function () {
+      // console.log(this.$site)
       const pages = this.$site.pages;
       pages.map((e) => {
         if (e?.frontmatter?.type === "blog") {
@@ -33,6 +41,7 @@ export default {
   },
   created() {
     this.getArticleFn();
+    console.log(this.articleList);
   },
   computed: {
     data() {
@@ -49,4 +58,58 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus" scoped>
+.wrap {
+  width: 90%;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  main {
+    margin-top: 5rem;
+    article {
+      margin-bottom: 4rem;
+      text-align: left;
+      header {
+        margin-bottom: 0.2rem;
+        h3 {
+          color: #2c3e50;
+          font-size: 1.75rem;
+          font-weight: bolder;
+          letter-spacing: 0.1rem;
+          text-rendering: optimizeLegibility;
+          font-size: 1.4427rem;
+          line-height: 1.1;
+          cursor: pointer;
+          margin-bottom: 1rem;
+        }
+        small {
+          font-family: 'Merriweather', 'Georgia', serif;
+          color: #34495e
+          font-weight: 400;
+          word-wrap: break-word;
+          font-kerning: normal;
+        }
+      }
+      p {
+        font-family: 'Merriweather', 'Georgia', serif;
+        color: #34495e;
+        font-weight: 400;
+        word-wrap: break-word;
+        font-kerning: normal;
+      }
+    }
+  }
+}
+.tag-list {
+  display: flex;
+  span{
+    display: inline-block;
+    margin-right: 0.625rem;
+    padding: 3px 8px;
+    border-radius: 0.125rem;
+    background: #34495e;
+    color: #ecf0f1;
+    font-size: 0.8125rem;
+  }
+}
+</style>

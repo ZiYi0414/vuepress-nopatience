@@ -16,12 +16,9 @@
 </template>
 
 <script>
-import NavLink from "@theme/components/NavLink.vue";
-
 export default {
   name: "Home",
 
-  components: { NavLink },
   data() {
     return {
       link: [
@@ -30,18 +27,23 @@ export default {
           link: "/blog",
           title: "Blog",
         },
-        {
+          {
           key: 2,
+          link: "/tag",
+          title: "Tags",
+        },
+        {
+          key: 3,
           link: "/",
           title: "Github",
         },
         {
-          key: 3,
+          key: 4,
           link: "/rss",
           title: "RSS",
         },
         {
-          key: 4,
+          key: 5,
           link: "/about",
           title: "About",
         },

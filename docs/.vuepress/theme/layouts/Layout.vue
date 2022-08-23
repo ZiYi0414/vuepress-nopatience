@@ -8,7 +8,9 @@
     <!-- <Home v-if="$page.frontmatter.home" /> -->
     <MyHome v-if="$page.frontmatter.home" />
     <Blog v-if="$page.frontmatter.blog" />
-    <Page v-else :sidebar-items="sidebarItems">
+    <TagPage v-if="$page.frontmatter.tagpage" />
+    <About v-if="$page.frontmatter.about" />
+    <Page v-else >
       <template #top>
         <slot name="page-top" />
       </template>
@@ -16,16 +18,17 @@
         <slot name="page-bottom" />
       </template>
     </Page>
+    <PageFooter />
   </div>
 </template>
 
 <script>
 import MyHome from "@theme/components/MyHome.vue";
 import Blog from "@theme/components/Blog.vue";
-import Navbar from "@theme/components/Navbar.vue";
+import TagPage from "@theme/components/Tags.vue";
+import About from "@theme/components/About.vue";
 import Page from "@theme/components/Page.vue";
-import Sidebar from "@theme/components/Sidebar.vue";
-import { resolveSidebarItems } from "../util";
+import PageFooter from "@theme/components/PageFooter.vue";
 
 export default {
   name: "Layout",
@@ -33,9 +36,10 @@ export default {
   components: {
     MyHome,
     Blog,
+    TagPage,
+    About,
     Page,
-    Sidebar,
-    Navbar,
+    PageFooter
   },
 
   data() {
@@ -45,38 +49,6 @@ export default {
   },
 
   computed: {
-    shouldShowNavbar() {
-      const { themeConfig } = this.$site;
-      const { frontmatter } = this.$page;
-      if (frontmatter.navbar === false || themeConfig.navbar === false) {
-        return false;
-      }
-      return (
-        this.$title ||
-        themeConfig.logo ||
-        themeConfig.repo ||
-        themeConfig.nav ||
-        this.$themeLocaleConfig.nav
-      );
-    },
-
-    shouldShowSidebar() {
-      const { frontmatter } = this.$page;
-      return (
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
-      );
-    },
-
-    sidebarItems() {
-      return resolveSidebarItems(
-        this.$page,
-        this.$page.regularPath,
-        this.$site,
-        this.$localePath
-      );
-    },
 
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass;
@@ -92,17 +64,9 @@ export default {
   },
 
   mounted() {
-    this.$router.afterEach(() => {
-      this.isSidebarOpen = false;
-    });
   },
 
   methods: {
-    toggleSidebar(to) {
-      this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
-      this.$emit("toggle-sidebar", this.isSidebarOpen);
-    },
-
     // side swipe
     onTouchStart(e) {
       this.touchStart = {

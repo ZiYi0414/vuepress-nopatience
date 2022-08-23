@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <PageHeader />
     <main>
       <router-link v-for="item in articleList" :key="item?.key" :to="item?.path">
         <article>
@@ -20,9 +21,13 @@
 </template>
 
 <script>
-export default {
-  name: "Home",
+import PageHeader from "@theme/components/PageHeader.vue";
 
+export default {
+  name: "Blog",
+  components: {
+    PageHeader,
+  },
   data() {
     return {
       articleList: [],
@@ -34,14 +39,13 @@ export default {
       const pages = this.$site.pages;
       pages.map((e) => {
         if (e?.frontmatter?.type === "blog") {
-          this.articleList.push(e);
+          this.articleList.unshift(e);
         }
       });
     },
   },
   created() {
     this.getArticleFn();
-    console.log(this.articleList);
   },
   computed: {
     data() {

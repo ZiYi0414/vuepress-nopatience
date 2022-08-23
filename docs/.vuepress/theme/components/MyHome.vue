@@ -1,53 +1,70 @@
 <template>
-  <section class="splash">
-    <section class="body">
-      <section class="shadow">
-        <section class="content">
-          <h1 class="title">NoPatience</h1>
-          <nav>
-            <router-link v-for="item in link" :key="item.key" :to="item.link">{{
-              item.title
-            }}</router-link>
-          </nav>
+  <MouseParallax>
+    <section class="splash" slot="parallax">
+      <section data-prax class="body">
+        <!-- <img data-prax :src="ceekwa" class="background-img" /> -->
+        <section class="shadow">
+          <section data-prax="0.3"  class="content">
+            <h1 class="title">NoPatience</h1>
+            <nav>
+              <div v-for="item in link" :key="item.key">
+                <a :href="item.link" target="_blank" v-if="item.outside">{{
+                  item.title
+                }}</a>
+                <router-link v-else :to="item.link">{{ item.title }}</router-link>
+              </div>
+            </nav>
+          </section>
         </section>
       </section>
     </section>
-  </section>
+  </MouseParallax>
 </template>
 
 <script>
+import { MouseParallax } from "../components/MouseParallax/index";
+import ceekwa from "../public/ceekwa.jpg";
+
 export default {
   name: "Home",
-
+  components: {
+    MouseParallax,
+  },
   data() {
     return {
       link: [
         {
           key: 1,
           link: "/blog",
+          outside: false,
           title: "Blog",
         },
-          {
+        {
           key: 2,
           link: "/tag",
+          outside: false,
           title: "Tags",
         },
         {
           key: 3,
-          link: "/",
+          link: "https://github.com/ZiYi0414",
+          outside: true,
           title: "Github",
         },
         {
           key: 4,
           link: "/rss",
+          outside: true,
           title: "RSS",
         },
         {
           key: 5,
           link: "/about",
+          outside: false,
           title: "About",
         },
       ],
+      ceekwa,
     };
   },
   computed: {
@@ -65,7 +82,7 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 section.splash
   width: 100vw
@@ -111,4 +128,10 @@ section.splash
         &:hover
           color: white
           text-shadow: 0 0 2px #fff
+  .background-img
+    position absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
 </style>

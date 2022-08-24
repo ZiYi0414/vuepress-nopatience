@@ -1,11 +1,6 @@
 <template>
   <main>
-    <section
-      class="splash"
-      ref="parallax"
-      data-hover-only="true"
-      data-relative-input="true"
-    >
+    <section class="splash" ref="parallax">
       <div class="parallax-wrap" data-depth="0.6">
         <section class="body">
           <section class="shadow"></section>
@@ -26,7 +21,12 @@
       </section>
     </section>
     <section class="iframe-wrap">
-      <iframe src="http://localhost:3000/" title="mine" width="700" height="700" />
+      <iframe
+        src="http://1.117.86.51:3003/"
+        title="mine"
+        width="700"
+        height="700"
+      />
     </section>
   </main>
 </template>
@@ -97,6 +97,8 @@ export default {
 
 <style lang="stylus" scoped>
 .iframe-wrap
+  position: relative
+  top: 100vh
   width: 100vw
   height: 100vh
   background: #000000
@@ -106,7 +108,9 @@ export default {
   overflow hidden
   iframe
     border: none
-section.splash
+.splash
+  position: fixed
+  top: 0
   width: 100%
   height: 100vh
   overflow: hidden

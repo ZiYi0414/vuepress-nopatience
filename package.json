@@ -5,10 +5,13 @@
   "author": "kko",
   "license": "mit",
   "scripts": {
-    "dev": "vuepress dev docs",
+    "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs"
   },
   "devDependencies": {
     "vuepress": "^1.9.7"
+  },
+  "dependencies": {
+    "parallax-js": "^3.1.0"
   }
 }

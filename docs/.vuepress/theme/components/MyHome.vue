@@ -1,39 +1,43 @@
 <template>
-  <MouseParallax>
-    <section class="splash" slot="parallax">
-      <div class="parallax-wrap" data-prax>
-        <section data-prax="0.2" class="body">
-          <!-- <img data-prax :src="ceekwa" class="background-img" /> -->
-          <section class="shadow">
-            <section data-prax="0.4" class="content">
-              <h1 class="title">NoPatience</h1>
-              <nav>
-                <div v-for="item in link" :key="item.key">
-                  <a :href="item.link" target="_blank" v-if="item.outside">{{
-                    item.title
-                  }}</a>
-                  <router-link v-else :to="item.link">{{
-                    item.title
-                  }}</router-link>
-                </div>
-              </nav>
-            </section>
-          </section>
+  <main>
+    <section
+      class="splash"
+      ref="parallax"
+      data-hover-only="true"
+      data-relative-input="true"
+    >
+      <div class="parallax-wrap" data-depth="0.6">
+        <section class="body">
+          <section class="shadow"></section>
         </section>
       </div>
+      <section class="content" data-depth="0.3">
+        <div class="content-wrap">
+          <h1 class="title">NoPatience</h1>
+          <nav>
+            <div v-for="item in link" :key="item.key">
+              <a :href="item.link" target="_blank" v-if="item.outside">{{
+                item.title
+              }}</a>
+              <router-link v-else :to="item.link">{{ item.title }}</router-link>
+            </div>
+          </nav>
+        </div>
+      </section>
     </section>
-  </MouseParallax>
+    <section class="iframe-wrap">
+      <iframe src="http://localhost:3000/" title="mine" width="700" height="700" />
+    </section>
+  </main>
 </template>
 
 <script>
-import { MouseParallax } from "../components/MouseParallax/index";
 import ceekwa from "../public/ceekwa.jpg";
+import Parallax from "parallax-js";
 
 export default {
   name: "Home",
-  components: {
-    MouseParallax,
-  },
+  components: {},
   data() {
     return {
       link: [
@@ -71,6 +75,11 @@ export default {
       ceekwa,
     };
   },
+  mounted() {
+    new Parallax(this.$refs.parallax, {
+      pointerEvents: true,
+    });
+  },
   computed: {
     data() {
       return this.$page.frontmatter;
@@ -87,7 +96,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+.iframe-wrap
+  width: 100vw
+  height: 100vh
+  background: #000000
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow hidden
+  iframe
+    border: none
 section.splash
   width: 100%
   height: 100vh
@@ -100,21 +118,21 @@ section.splash
     height: 100%
   .body
     position: absolute
-    top : -15%
+    top : -8%
     left: -10%
     background: url('../public/1.png')
     background-size: cover
     background-position-x: 50%
     width: 120%
     height: 115%
-  .content
-    font-family: Comfortaa,source sans pro,Ubuntu,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Source Han Sans CN,Source Han Sans SC,Microsoft YaHei,Wenquanyi Micro Hei,WenQuanYi Zen Hei,ST Heiti,SimHei,WenQuanYi Zen Hei Sharp,Arial,sans-serif
-    width: 100%
-    height: 100%
+  .content-wrap
     display: flex
     align-items: center
     justify-content: center
     flex-direction: column
+    width: 100vw
+    height: 100vh
+    font-family: Comfortaa,source sans pro,Ubuntu,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Source Han Sans CN,Source Han Sans SC,Microsoft YaHei,Wenquanyi Micro Hei,WenQuanYi Zen Hei,ST Heiti,SimHei,WenQuanYi Zen Hei Sharp,Arial,sans-serif
     .title
       margin-bottom: 1.4rem
       color: rgba(255, 255, 255, 0.8)
@@ -138,10 +156,4 @@ section.splash
         &:hover
           color: white
           text-shadow: 0 0 2px #fff
-  .background-img
-    position absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
 </style>

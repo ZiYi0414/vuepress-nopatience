@@ -49,7 +49,7 @@ export default {
         },
         {
           key: 2,
-          link: "/tag",
+          link: "/tags",
           outside: false,
           title: "Tags",
         },

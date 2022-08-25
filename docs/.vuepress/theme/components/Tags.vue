@@ -5,8 +5,8 @@
       <ul class="tag-list-search">
         <li class="tag-list-search-span" v-for="tag in tags" :key="tag">{{ tag }}</li>
       </ul>
-      <router-link v-for="item in articleList" :key="item?.key" :to="item?.path">
-        <article>
+      <article v-for="item in articleList" :key="item?.key">
+        <router-link :to="item?.path">
           <header>
             <h3>{{ item?.title }}</h3>
             <small>{{ item?.date }}</small>
@@ -14,13 +14,13 @@
           <p>
             {{ item?.description }}
           </p>
-          <div class="tag-list">
-            <span class="tag-list-span" v-for="tag in item?.tags" :key="tag">{{
-              tag
-            }}</span>
-          </div>
-        </article>
-      </router-link>
+        </router-link>
+        <div class="tag-list">
+          <span class="tag-list-span" v-for="tag in item?.tags" :key="tag">{{
+            tag
+          }}</span>
+        </div>
+      </article>
     </main>
   </div>
 </template>

@@ -13,15 +13,18 @@
 
 <style lang="css" scoped>
 footer {
+  background: #0e1116;
+  z-index: 999;
   padding-bottom: 10px;
   bottom: 0;
   width: 100%;
   text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: #FFF;
 }
 .link {
-  color: #34495e;
-  font-family: "Merriweather", "Georgia", serif;
-  font-weight: 400;
+  color: #FFF;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";

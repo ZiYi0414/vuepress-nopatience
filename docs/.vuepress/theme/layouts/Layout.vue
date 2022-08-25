@@ -10,14 +10,7 @@
     <Blog v-if="$page.frontmatter.blog" />
     <TagPage v-if="$page.frontmatter.tagpage" />
     <About v-if="$page.frontmatter.about" />
-    <Page v-else >
-      <template #top>
-        <slot name="page-top" />
-      </template>
-      <template #bottom>
-        <slot name="page-bottom" />
-      </template>
-    </Page>
+    <Page v-if="$page.frontmatter.type === 'blog'" />
     <PageFooter />
   </div>
 </template>
@@ -39,7 +32,7 @@ export default {
     TagPage,
     About,
     Page,
-    PageFooter
+    PageFooter,
   },
 
   data() {
@@ -49,7 +42,6 @@ export default {
   },
 
   computed: {
-
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass;
       return [
@@ -63,8 +55,7 @@ export default {
     },
   },
 
-  mounted() {
-  },
+  mounted() {},
 
   methods: {
     // side swipe

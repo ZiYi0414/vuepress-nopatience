@@ -2,12 +2,8 @@
   <div class="wrap">
     <PageHeader />
     <main>
-      <router-link
-        v-for="item in articleList"
-        :key="item?.key"
-        :to="item?.path"
-      >
-        <article>
+      <article v-for="item in articleList" :key="item?.key">
+        <router-link :to="item?.path">
           <header>
             <h3>{{ item?.frontmatter?.title }}</h3>
             <small>{{ item?.frontmatter?.date }}</small>
@@ -15,13 +11,11 @@
           <p>
             {{ item?.frontmatter?.description }}
           </p>
-          <div class="tag-list">
-            <span v-for="tag in item?.frontmatter?.tags" :key="tag">{{
-              tag
-            }}</span>
-          </div>
-        </article>
-      </router-link>
+        </router-link>
+        <div class="tag-list">
+          <span v-for="tag in item?.frontmatter?.tags" :key="tag">{{ tag }}</span>
+        </div>
+      </article>
     </main>
   </div>
 </template>

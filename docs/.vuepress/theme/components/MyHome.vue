@@ -1,6 +1,21 @@
 <template>
   <main>
-    <section class="splash" ref="parallax">
+    <header ref="header">
+      <nav>
+        <div v-for="item in link" :key="item.key">
+          <a :href="item.link" target="_blank" v-if="item.outside">{{ item.title }}</a>
+          <router-link v-else :to="item.link">{{ item.title }}</router-link>
+        </div>
+      </nav>
+    </header>
+    <section
+      class="splash"
+      id="rellax"
+      ref="parallax"
+      data-hover-only="true"
+      relativeInput="true"
+      data-rellax-speed="-7"
+    >
       <div class="parallax-wrap" data-depth="0.6">
         <section class="body">
           <section class="shadow"></section>
@@ -21,6 +36,18 @@
       </section>
     </section>
     <section class="iframe-wrap">
+      <div class="wrapper">
+        <h2>Me</h2>
+        <div class="title">comp sci. cv engineer & visual design enthusiast</div>
+        <div class="title">Standing on the Shoulders of Giants.</div>
+        <div class="title">Hello，Yours World。</div>
+        <div class="title">「 地铁NFC失灵狂魔 」 「 Love Hooks 」</div>
+
+        <div class="title">
+          const More = (mine: cve ): void =>
+          <RouterLink to="/about">router.push("/about")</RouterLink>
+        </div>
+      </div>
       <iframe
         src="http://1.117.86.51:3003/"
         importance="high"
@@ -36,8 +63,8 @@
 </template>
 
 <script>
-import ceekwa from "../public/ceekwa.jpg";
 import Parallax from "parallax-js";
+import Rellax from "rellax";
 
 export default {
   name: "Home",
@@ -76,45 +103,63 @@ export default {
           title: "About",
         },
       ],
-      ceekwa,
     };
   },
+
   mounted() {
     new Parallax(this.$refs.parallax, {
       pointerEvents: true,
     });
-  },
-  computed: {
-    data() {
-      return this.$page.frontmatter;
-    },
-
-    actionLink() {
-      return {
-        link: this.data.actionLink,
-        text: this.data.actionText,
-      };
-    },
+    new Rellax("#rellax", {});
   },
 };
 </script>
 
 <style lang="stylus" scoped>
-.iframe-wrap
-  position: relative
-  top: 100vh
+header
+  position: fixed
+  top: 0
+  left: 0
+  display: none
+  align-items: center
+  justify-content: center
   width: 100vw
-  height: 100vh
-  background: #000000
+  height: 80px
+  background: #00000070
+  backdrop-filter: blur(10px)
+  z-index: 9999
+  nav
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    a
+      color: white
+      font-size: 1.8em
+      margin-right: 2rem
+      color: rgba(255, 255, 255, 0.65)
+      transition: all 0.6s
+      cursor: pointer
+      display: inline-flex
+      justify-content: center
+      &:hover
+        color: white
+        text-shadow: 0 0 2px #fff
+
+.iframe-wrap
   display: flex
+  flex-direction: column
   justify-content: center
   align-items: center
+  position: relative
+  width: 100vw
+  min-height: 100vh
+  padding: 3rem 0
+  background: #0e1116
   overflow hidden
   iframe
     border: none
 .splash
-  position: fixed
-  top: 0
   width: 100%
   height: 100vh
   overflow: hidden
@@ -164,4 +209,51 @@ export default {
         &:hover
           color: white
           text-shadow: 0 0 2px #fff
+.wrapper {
+  width: 90%;
+  max-width: 48rem;
+  margin: 15vh auto;
+  display: grid;
+  place-items: center;
+  color: #FFF
+  a {
+  color: #9b59b6;
+}
+}
+
+.typing-demo {
+  width: 24ch;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: Comfortaa, source sans pro, Ubuntu, Segoe UI, Roboto, Oxygen, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Source Han Sans CN, Source Han Sans SC, Microsoft YaHei, Wenquanyi Micro Hei,
+    WenQuanYi Zen Hei, ST Heiti, SimHei, WenQuanYi Zen Hei Sharp, Arial, sans-serif;
+  font-size: 2rem;
+}
+.title {
+  margin-top: 1.4rem;
+  margin-bottom: 1.6rem;
+}
+
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .typing-demo {
+    font-size: 1.5rem;
+  }
+}
 </style>

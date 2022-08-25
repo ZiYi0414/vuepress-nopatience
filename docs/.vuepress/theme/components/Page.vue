@@ -3,13 +3,8 @@
     <div class="header-wrap" v-if="$page?.frontmatter?.type === 'blog'">
       <PageHeader />
     </div>
-
-    <slot name="top" />
-
     <Content class="theme-default-content" />
     <PageEdit />
-
-    <slot name="bottom" />
   </main>
 </template>
 
@@ -20,9 +15,7 @@ import PageHeader from "@theme/components/PageHeader.vue";
 export default {
   components: { PageEdit, PageHeader },
   props: ["sidebarItems"],
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 

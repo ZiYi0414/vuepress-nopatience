@@ -1402,6 +1402,14 @@
     "@vuepress/types" "1.9.7"
     "lodash.debounce" "^4.0.8"
 
+"@vuepress/plugin-back-to-top@^1.9.7":
+  "integrity" "sha512-DM1S+Q8Xn/i+zhe4zThekxb1M2abfKLklg/NKtQloklHKdNdVfk+EcxWYNmNfSii+ymDWaaG8lmH0xjVhy0iXw=="
+  "resolved" "https://registry.npmmirror.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.9.7.tgz"
+  "version" "1.9.7"
+  dependencies:
+    "@vuepress/types" "1.9.7"
+    "lodash.debounce" "^4.0.8"
+
 "@vuepress/plugin-last-updated@1.9.7":
   "integrity" "sha512-FiFBOl49dlFRjbLRnRAv77HDWfe+S/eCPtMQobq4/O3QWuL3Na5P4fCTTVzq1K7rWNO9EPsWNB2Jb26ndlQLKQ=="
   "resolved" "https://registry.npmmirror.com/@vuepress/plugin-last-updated/-/plugin-last-updated-1.9.7.tgz"

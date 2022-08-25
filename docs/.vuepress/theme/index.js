@@ -27,6 +27,8 @@ module.exports = (options, ctx) => {
 
     plugins: [
       ['@vuepress/active-header-links', options.activeHeaderLinks],
+      '@vuepress/last-updated',
+      '@vuepress/back-to-top',
       '@vuepress/search',
       '@vuepress/plugin-nprogress',
       ['container', {

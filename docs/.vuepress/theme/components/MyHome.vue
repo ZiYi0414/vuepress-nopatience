@@ -23,10 +23,14 @@
     <section class="iframe-wrap">
       <iframe
         src="http://1.117.86.51:3003/"
+        importance="high"
+        scrolling="no"
         title="mine"
         width="700"
         height="700"
-      />
+      >
+        <p>Your browser does not support iframes.</p>
+      </iframe>
     </section>
   </main>
 </template>

@@ -70,7 +70,7 @@ export default {
 
 <style lang="stylus" scoped>
 .wrap {
-  padding: 2rem 2.5rem;
+  padding: 2rem 1.5rem;
   max-width: 46.5rem;
   margin-left: auto;
   margin-right: auto;

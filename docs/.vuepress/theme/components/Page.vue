@@ -20,6 +20,9 @@ import PageHeader from "@theme/components/PageHeader.vue";
 export default {
   components: { PageEdit, PageHeader },
   props: ["sidebarItems"],
+  methods: {
+
+  },
 };
 </script>
 
@@ -31,6 +34,6 @@ export default {
   display block
 .header-wrap
   max-width: 46.25rem
-  padding: 2rem 2.5rem;
+  padding: 2rem 1.5rem;
   margin: 0 auto
 </style>

@@ -2,20 +2,22 @@
   <div class="wrap">
     <PageHeader />
     <main>
-      <div class="tag-list">
-        <span v-for="tag in tags" :key="tag">{{ tag }}</span>
-      </div>
+      <ul class="tag-list-search">
+        <li class="tag-list-search-span" v-for="tag in tags" :key="tag">{{ tag }}</li>
+      </ul>
       <router-link v-for="item in articleList" :key="item?.key" :to="item?.path">
         <article>
           <header>
-            <h3>{{ item?.frontmatter?.title }}</h3>
-            <small>{{ item?.frontmatter?.date }}</small>
+            <h3>{{ item?.title }}</h3>
+            <small>{{ item?.date }}</small>
           </header>
           <p>
-            {{ item?.frontmatter?.description }}
+            {{ item?.description }}
           </p>
           <div class="tag-list">
-            <span v-for="tag in item?.frontmatter?.tags" :key="tag">{{ tag }}</span>
+            <span class="tag-list-span" v-for="tag in item?.tags" :key="tag">{{
+              tag
+            }}</span>
           </div>
         </article>
       </router-link>
@@ -25,7 +27,6 @@
 
 <script>
 import PageHeader from "@theme/components/PageHeader.vue";
-
 export default {
   name: "Blog",
   components: {
@@ -48,7 +49,14 @@ export default {
       const pages = this.$site.pages;
       pages.map((e) => {
         if (e?.frontmatter?.type === "blog") {
-          this.articleList.unshift(e);
+          this.articleList.unshift({
+            key: e?.key,
+            path: e?.path,
+            tags: e?.frontmatter?.tags,
+            description: e?.frontmatter?.description,
+            title: e?.frontmatter?.title,
+            date: e?.frontmatter?.date,
+          });
           e?.frontmatter?.tags && this.tags.push(e.frontmatter.tags);
         }
       });
@@ -117,7 +125,7 @@ export default {
 }
 .tag-list {
   display: flex;
-  span{
+  .tag-list-span{
     display: inline-block;
     margin-right: 0.625rem;
     padding: 3px 8px;
@@ -125,6 +133,56 @@ export default {
     background: #34495e;
     color: #ecf0f1;
     font-size: 0.8125rem;
+  }
+}
+.tag-list-search {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  .tag-list-search-span {
+    background: #eee;
+    border-radius: 3px 0 0 3px;
+    color: #34495e;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+  }
+  .tag-list-search-span::before {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+  }
+
+  .tag-list-search-span::after {
+    background: #fff;
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid #eee;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .tag-list-search-span:hover {
+    background-color: #34495e;
+    color: white;
+  }
+
+  .tag-list-search-span:hover::after {
+    border-left-color: #34495e;
   }
 }
 </style>

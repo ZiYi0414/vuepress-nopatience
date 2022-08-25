@@ -3,13 +3,19 @@
     <div class="back" @click="goBack">
       <img src="../public/RUNOOB.png" alt="返回上一页" />
     </div>
-    <RouterLink to="/"> NoPatience </RouterLink>
+    <SearchBox v-if="$page?.frontmatter?.blog || $page?.frontmatter?.tagpage" />
+    <RouterLink v-else to="/"> NoPatience </RouterLink>
   </div>
 </template>
 
 <script>
+import SearchBox from "@SearchBox";
+
 export default {
   name: "PageHeader",
+  components: {
+    SearchBox,
+  },
   methods: {
     goBack() {
       this.$router.go(-1);
@@ -22,6 +28,7 @@ export default {
 .top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .top .back {
   width: 44px;

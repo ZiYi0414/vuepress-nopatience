@@ -4,18 +4,22 @@
       <span></span>
       <img src="../public/RUNOOB.png" alt="返回上一页" />
     </div>
-    <SearchBox v-if="$page?.frontmatter?.blog || $page?.frontmatter?.tagpage" />
-    <RouterLink v-else to="/"> NoPatience </RouterLink>
+    <div class="right">
+      <ModePicker />
+      <SearchBox v-if="$page?.frontmatter?.blog || $page?.frontmatter?.tagpage" />
+      <RouterLink v-else to="/"> NoPatience </RouterLink>
+    </div>
   </div>
 </template>
 
 <script>
 import SearchBox from "@SearchBox";
-
+import ModePicker from "./ModePicker/ModePicker.vue";
 export default {
   name: "PageHeader",
   components: {
     SearchBox,
+    ModePicker,
   },
   methods: {
     goBack() {
@@ -26,6 +30,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.right{
+  display: flex;
+  align-items: center;
+}
 .top {
   display: flex;
   justify-content: space-between;
@@ -38,7 +46,7 @@ export default {
   align-items: center;
   width: 44px;
   height: 44px;
-  background: #34495e;
+  background: var(--icon-bg-color);
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
@@ -76,8 +84,13 @@ export default {
   transition: all 0.25s;
 }
 .top a {
-  color: #34495e;
+  color: var(--text-color);
   font-size: 2rem;
   font-weight: bolder;
+  transition: all 0.25s;
+}
+.top a:hover {
+  text-shadow: 0 0 2px var(--text-color);
+  transition: all 0.25s;
 }
 </style>

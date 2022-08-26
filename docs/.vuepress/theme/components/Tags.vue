@@ -42,14 +42,12 @@ export default {
     getTagsFn: function () {
       this.tags = new Set(this.tags.flat(Infinity));
       this.tags = [...this.tags];
-      console.log(this.tags);
     },
     getArticleFn: function () {
-      console.log(this.$site);
       const pages = this.$site.pages;
       pages.map((e) => {
         if (e?.frontmatter?.type === "blog") {
-          this.articleList.unshift({
+          this.articleList.push({
             key: e?.key,
             path: e?.path,
             tags: e?.frontmatter?.tags,
@@ -95,7 +93,7 @@ export default {
       header {
         margin-bottom: 0.2rem;
         h3 {
-          color: #2c3e50;
+          color: var(--h-color);
           font-size: 1.75rem;
           font-weight: bolder;
           letter-spacing: 0.1rem;
@@ -104,10 +102,11 @@ export default {
           line-height: 1.1;
           cursor: pointer;
           margin-bottom: 1rem;
+          transition: all 0.25s;
         }
         small {
           font-family: 'Merriweather', 'Georgia', serif;
-          color: #34495e
+          color: var(--text-color)
           font-weight: 400;
           word-wrap: break-word;
           font-kerning: normal;
@@ -115,10 +114,16 @@ export default {
       }
       p {
         font-family: 'Merriweather', 'Georgia', serif;
-        color: #34495e;
+        color: var(--text-color);
         font-weight: 400;
         word-wrap: break-word;
         font-kerning: normal;
+      }
+    }
+    article:hover {
+      h3{
+        text-shadow: 0 0 1px var(--text-color);
+        transition: all 0.25s;
       }
     }
   }
@@ -130,20 +135,21 @@ export default {
     margin-right: 0.625rem;
     padding: 3px 8px;
     border-radius: 0.125rem;
-    background: #34495e;
-    color: #ecf0f1;
+    background: var(--tag-bg-color);
+    color: var(--tag-text-color);
     font-size: 0.8125rem;
   }
 }
 .tag-list-search {
+  cursor: pointer;
   list-style: none;
   margin: 0;
   overflow: hidden;
   padding: 0;
   .tag-list-search-span {
-    background: #eee;
+    background: var(--tag-bg-color);
     border-radius: 3px 0 0 3px;
-    color: #34495e;
+    color: var(--tag-text-color);
     display: inline-block;
     height: 26px;
     line-height: 26px;
@@ -154,7 +160,7 @@ export default {
     -webkit-transition: color 0.2s;
   }
   .tag-list-search-span::before {
-    background: #fff;
+    background: var(--bg-color);
     border-radius: 10px;
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
     content: '';
@@ -166,9 +172,9 @@ export default {
   }
 
   .tag-list-search-span::after {
-    background: #fff;
+    background: var(--bg-color);
     border-bottom: 13px solid transparent;
-    border-left: 10px solid #eee;
+    border-left: 10px solid var(--tag-bg-color);
     border-top: 13px solid transparent;
     content: '';
     position: absolute;
@@ -177,12 +183,12 @@ export default {
   }
 
   .tag-list-search-span:hover {
-    background-color: #34495e;
-    color: white;
+    background-color: var(--tag-hover-bg-color);
+    color: var(--tag-hover-text-color);
   }
 
   .tag-list-search-span:hover::after {
-    border-left-color: #34495e;
+    border-left-color: var(--tag-hover-bg-color);
   }
 }
 </style>

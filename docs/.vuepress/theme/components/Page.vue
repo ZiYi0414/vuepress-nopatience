@@ -14,7 +14,6 @@ import PageHeader from "@theme/components/PageHeader.vue";
 
 export default {
   components: { PageEdit, PageHeader },
-  props: ["sidebarItems"],
   methods: {},
 };
 </script>

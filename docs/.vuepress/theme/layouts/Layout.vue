@@ -22,6 +22,7 @@ import TagPage from "@theme/components/Tags.vue";
 import About from "@theme/components/About.vue";
 import Page from "@theme/components/Page.vue";
 import PageFooter from "@theme/components/PageFooter.vue";
+import applyMode from "@theme/components/ModePicker/applyMode.js";
 
 export default {
   name: "Layout",
@@ -55,7 +56,10 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    const mode = localStorage.getItem("mode") || this.$themeConfig.mode || "auto";
+    applyMode(mode)
+  },
 
   methods: {
     // side swipe

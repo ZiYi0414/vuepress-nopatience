@@ -38,11 +38,10 @@
     <section class="iframe-wrap">
       <div class="wrapper">
         <h2>Me</h2>
+        <div class="title">I'm Luyiin, </div>
+        <div class="title">Why is Luyiin. just i want</div>
         <div class="title">comp sci. cv engineer & visual design enthusiast</div>
         <div class="title">Standing on the Shoulders of Giants.</div>
-        <div class="title">Hello，Yours World。</div>
-        <div class="title">「 地铁NFC失灵狂魔 」 「 Love Hooks 」</div>
-
         <div class="title">
           const More = (mine: cve ): void =>
           <RouterLink to="/about">router.push("/about")</RouterLink>
@@ -155,8 +154,8 @@ header
   width: 100vw
   min-height: 100vh
   padding: 3rem 0
-  background: #0e1116
-  overflow hidden
+  background: var(--bg-color)
+  overflow hidden    
   iframe
     border: none
 .splash
@@ -166,14 +165,14 @@ header
   .parallax-wrap
     height: 100%
   .shadow
-    background-color: rgba(0, 0, 0, 0.7)
+    background-color: var(--mask)
     width: 100%
     height: 100%
   .body
     position: absolute
     top : -8%
     left: -10%
-    background: url('../public/1.png')
+    background: url('../public/ceekwa.jpg')
     background-size: cover
     background-position-x: 50%
     width: 120%
@@ -212,27 +211,15 @@ header
 .wrapper {
   width: 90%;
   max-width: 48rem;
-  margin: 15vh auto;
+  margin: 0 auto 20px;
   display: grid;
   place-items: center;
-  color: #FFF
+  color: var(--text-color)
   a {
-  color: #9b59b6;
+  color: var(--text-color);
 }
 }
 
-.typing-demo {
-  width: 24ch;
-  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  font-family: Comfortaa, source sans pro, Ubuntu, Segoe UI, Roboto, Oxygen, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
-    Source Han Sans CN, Source Han Sans SC, Microsoft YaHei, Wenquanyi Micro Hei,
-    WenQuanYi Zen Hei, ST Heiti, SimHei, WenQuanYi Zen Hei Sharp, Arial, sans-serif;
-  font-size: 2rem;
-}
 .title {
   margin-top: 1.4rem;
   margin-bottom: 1.6rem;

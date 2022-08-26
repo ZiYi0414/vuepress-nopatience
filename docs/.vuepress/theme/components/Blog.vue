@@ -39,7 +39,7 @@ export default {
       const pages = this.$site.pages;
       pages.map((e) => {
         if (e?.frontmatter?.type === "blog") {
-          this.articleList.unshift(e);
+          this.articleList.push(e);
         }
       });
     },
@@ -76,7 +76,7 @@ export default {
       header {
         margin-bottom: 0.2rem;
         h3 {
-          color: #2c3e50;
+          color: var(--h-color);
           font-size: 1.75rem;
           font-weight: bolder;
           letter-spacing: 0.1rem;
@@ -85,10 +85,11 @@ export default {
           line-height: 1.1;
           cursor: pointer;
           margin-bottom: 1rem;
+          transition: all 0.25s;
         }
         small {
           font-family: 'Merriweather', 'Georgia', serif;
-          color: #34495e
+          color: var(--text-color)
           font-weight: 400;
           word-wrap: break-word;
           font-kerning: normal;
@@ -96,10 +97,16 @@ export default {
       }
       p {
         font-family: 'Merriweather', 'Georgia', serif;
-        color: #34495e;
+        color: var(--text-color);
         font-weight: 400;
         word-wrap: break-word;
         font-kerning: normal;
+      }
+    }
+    article:hover {
+      h3{
+        text-shadow: 0 0 1px var(--text-color);
+        transition: all 0.25s;
       }
     }
   }
@@ -111,8 +118,8 @@ export default {
     margin-right: 0.625rem;
     padding: 3px 8px;
     border-radius: 0.125rem;
-    background: #34495e;
-    color: #ecf0f1;
+    background: var(--tag-bg-color);
+    color: var(--tag-text-color);
     font-size: 0.8125rem;
   }
 }

@@ -13,7 +13,7 @@
 
 <style lang="css" scoped>
 footer {
-  background: #0e1116;
+  background: var(--bg-color);
   z-index: 999;
   padding-bottom: 10px;
   bottom: 0;
@@ -21,10 +21,10 @@ footer {
   text-align: center;
   font-size: 12px;
   font-weight: 400;
-  color: #FFF;
+  color: var(--text-color);
 }
 .link {
-  color: #FFF;
+  color: var(--text-color);
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";

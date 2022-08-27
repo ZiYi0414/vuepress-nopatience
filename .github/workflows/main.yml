@@ -35,5 +35,5 @@ jobs:
         pass: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         connect_timeout: 10s
-        local: './dist/*'
+        local: 'docs/.vuepress/dist/*'
         remote: /www/wwwroot/nopatience.com/dist

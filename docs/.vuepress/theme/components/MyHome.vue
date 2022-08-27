@@ -1,13 +1,5 @@
 <template>
   <main>
-    <header ref="header">
-      <nav>
-        <div v-for="item in link" :key="item.key">
-          <a :href="item.link" target="_blank" v-if="item.outside">{{ item.title }}</a>
-          <router-link v-else :to="item.link">{{ item.title }}</router-link>
-        </div>
-      </nav>
-    </header>
     <section
       class="splash"
       id="rellax"
@@ -49,15 +41,13 @@
         </div>
       </div>
       <iframe
-        src="http://1.117.86.51:3003/"
+        src="https://mine.nopatience.cn/"
         importance="high"
         scrolling="no"
         title="mine"
         width="700"
         height="700"
-      >
-        <p>Your browser does not support iframes.</p>
-      </iframe>
+      />
     </section>
   </main>
 </template>
@@ -116,36 +106,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-header
-  position: fixed
-  top: 0
-  left: 0
-  display: none
-  align-items: center
-  justify-content: center
-  width: 100vw
-  height: 80px
-  background: #00000070
-  backdrop-filter: blur(10px)
-  z-index: 9999
-  nav
-    height: 100%
-    display: flex
-    align-items: center
-    justify-content: center
-    a
-      color: white
-      font-size: 1.8em
-      margin-right: 2rem
-      color: rgba(255, 255, 255, 0.65)
-      transition: all 0.6s
-      cursor: pointer
-      display: inline-flex
-      justify-content: center
-      &:hover
-        color: white
-        text-shadow: 0 0 2px #fff
-
 .iframe-wrap
   display: flex
   flex-direction: column

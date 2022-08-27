@@ -9,10 +9,11 @@
     "build": "vuepress build docs"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.9.7",
-    "vuepress": "^1.9.7"
+   
   },
   "dependencies": {
+    "@vuepress/plugin-back-to-top": "^1.9.7",
+    "vuepress": "^1.9.7",
     "@vssue/api-github-v3": "^1.4.7",
     "@vssue/vuepress-plugin-vssue": "^1.4.8",
     "parallax-js": "^3.1.0",

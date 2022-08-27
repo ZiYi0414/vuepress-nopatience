@@ -7,6 +7,13 @@ module.exports = {
     [
       "meta",
       {
+        "http-equiv": "Content-Security-Policy",
+        content: "upgrade-insecure-requests",
+      },
+    ],
+    [
+      "meta",
+      {
         name: "viewport",
         content:
           "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0",
@@ -27,7 +34,7 @@ module.exports = {
     editLinkText: "在GitHub编辑此页",
   },
   plugins: {
-    '@vssue/vuepress-plugin-vssue': {
+    "@vssue/vuepress-plugin-vssue": {
       // 设置 `platform` 而不是 `api`
       platform: "github",
       autoCreateIssue: true,

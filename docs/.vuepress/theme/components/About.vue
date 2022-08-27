@@ -4,12 +4,16 @@
     <h2>Me</h2>
     <div class="title">comp sci. cv engineer & visual design enthusiast</div>
     <div class="title">Standing on the Shoulders of Giants.</div>
-    <div class="title">Hello，Yours World。</div>
+    <div class="title">Hello，Yours World.</div>
     <div class="title">「 地铁NFC失灵狂魔 」 「 Love Hooks 」</div>
+    <div class="title">「 只要你开口, 我们就能飞向云端 」</div>
+    <div class="title">下辈子不想当程序员，想去全世界画画</div>
+    <div class="title">极简设计主义</div>
+    <div class="title">ラタムニカ</div>
 
     <div class="title">
       Hi, let My_Blog = (mine: cve ): void =>
-      <RouterLink to="/">NoPatience myBlog</RouterLink>
+      <RouterLink to="/">NoPatience myBlog❀</RouterLink>
     </div>
     <a href="https://github.com/ZiYi0414/vuepress-nopatience" target="_blank">How this page work 👉</a>
   </div>

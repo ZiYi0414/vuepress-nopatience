@@ -1,6 +1,5 @@
 ---
 home: true
-navbar: false
 title: "NoPatience"
 description: "我的第三个博客"
 ---

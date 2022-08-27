@@ -1,7 +1,7 @@
 <template>
   <div class="top">
     <div class="back" @click="goBack">
-      <span></span>
+      <span class="icon"></span>
       <img src="../public/RUNOOB.png" alt="返回上一页" />
     </div>
     <div class="right">
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.right{
+.right {
   display: flex;
   align-items: center;
 }
@@ -44,8 +44,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 44px;
-  height: 44px;
   background: var(--icon-bg-color);
   cursor: pointer;
   border-radius: 4px;
@@ -92,5 +90,14 @@ export default {
 .top a:hover {
   text-shadow: 0 0 2px var(--text-color);
   transition: all 0.25s;
+}
+@media screen and (max-width: 450px) {
+  .top a {
+    font-size: 1.5rem;
+  }
+  .top .back img {
+    width: 32px;
+    height: 32px;
+  }
 }
 </style>

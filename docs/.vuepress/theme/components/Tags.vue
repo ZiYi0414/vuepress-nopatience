@@ -3,7 +3,14 @@
     <PageHeader />
     <main>
       <ul class="tag-list-search">
-        <li class="tag-list-search-span" v-for="tag in tags" :key="tag">{{ tag }}</li>
+        <li
+          class="tag-list-search-span"
+          v-for="tag in tags"
+          :key="tag"
+          @click="getSomeArticleByTag(tag)"
+        >
+          {{ tag }}
+        </li>
       </ul>
       <article v-for="item in articleList" :key="item?.key">
         <router-link :to="item?.path">
@@ -35,10 +42,36 @@ export default {
   data() {
     return {
       articleList: [],
+      articleListByTag: [],
       tags: [],
     };
   },
   methods: {
+    sortByDate: function (a, b) {
+      if (a && b) return Date.parse(b) - Date.parse(a);
+      else return;
+    },
+    getSomeArticleByTag: function (tag) {
+      const pages = this.$site.pages;
+      pages.map((e) => {
+        if (e?.frontmatter?.type === "blog") {
+          if (e?.frontmatter?.tags?.includes(tag)) {
+            this.articleListByTag.push({
+              key: e?.key,
+              path: e?.path,
+              tags: e?.frontmatter?.tags,
+              description: e?.frontmatter?.description,
+              title: e?.frontmatter?.title,
+              date: e?.frontmatter?.date,
+              lastUpdated: e?.lastUpdated,
+            });
+          }
+        }
+      });
+      this.articleList = this.articleListByTag;
+      this.articleList?.sort((a, b) => this.sortByDate(a?.lastUpdated, b?.lastUpdated));
+      this.articleListByTag = [];
+    },
     getTagsFn: function () {
       this.tags = new Set(this.tags.flat(Infinity));
       this.tags = [...this.tags];
@@ -54,10 +87,12 @@ export default {
             description: e?.frontmatter?.description,
             title: e?.frontmatter?.title,
             date: e?.frontmatter?.date,
+            lastUpdated: e?.lastUpdated,
           });
           e?.frontmatter?.tags && this.tags.push(e.frontmatter.tags);
         }
       });
+      this.articleList?.sort((a, b) => this.sortByDate(a?.lastUpdated, b?.lastUpdated));
     },
   },
   created() {

@@ -24,6 +24,7 @@
       <section class="content" data-depth="0.3">
         <div class="content-wrap">
           <h1 class="title">NoPatience</h1>
+          <h2 class="subtitle">Luyiin 's ❤️</h2>
           <nav>
             <div v-for="item in link" :key="item.key">
               <a :href="item.link" target="_blank" v-if="item.outside">{{
@@ -38,7 +39,7 @@
     <section class="iframe-wrap">
       <div class="wrapper">
         <h2>Me</h2>
-        <div class="title">I'm Luyiin, </div>
+        <div class="title">I'm Luyiin,</div>
         <div class="title">Why is Luyiin. just i want</div>
         <div class="title">comp sci. cv engineer & visual design enthusiast</div>
         <div class="title">Standing on the Shoulders of Giants.</div>
@@ -154,8 +155,9 @@ header
   width: 100vw
   min-height: 100vh
   padding: 3rem 0
+  border-radius: 20px
   background: var(--bg-color)
-  overflow hidden    
+  overflow hidden
   iframe
     border: none
 .splash
@@ -186,16 +188,14 @@ header
     height: 100vh
     font-family: Comfortaa,source sans pro,Ubuntu,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Source Han Sans CN,Source Han Sans SC,Microsoft YaHei,Wenquanyi Micro Hei,WenQuanYi Zen Hei,ST Heiti,SimHei,WenQuanYi Zen Hei Sharp,Arial,sans-serif
     .title
-      margin-bottom: 1.4rem
+      margin-bottom: 1rem
       color: rgba(255, 255, 255, 0.8)
       font-size: 3.5rem
     .subtitle
-      margin-bottom: 1rem
+      margin-bottom: 1.6rem
       color: rgba(255, 255, 255, 0.7)
     nav
       display: flex
-      @media only screen and (max-width: 600px)
-        flex-direction: column
       a
         color: white
         font-size: 1.8em
@@ -226,21 +226,34 @@ header
 }
 
 
-@keyframes typing {
-  from {
-    width: 0;
+@media screen and (max-width: 450px) {
+ .splash{
+ .content-wrap{
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 100vw
+    height: 100vh
+    font-family: Comfortaa,source sans pro,Ubuntu,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Source Han Sans CN,Source Han Sans SC,Microsoft YaHei,Wenquanyi Micro Hei,WenQuanYi Zen Hei,ST Heiti,SimHei,WenQuanYi Zen Hei Sharp,Arial,sans-serif
+    .title{
+      margin-bottom: 1.2rem
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 3rem
+    }
+    .subtitle{
+      margin-bottom: 1.6rem
+      color: rgba(255, 255, 255, 0.7)}
+    nav{
+      display: flex
+      a{
+        font-size: 1.2em
+        }
+    }
   }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .typing-demo {
-    font-size: 1.5rem;
-  }
+ }
+ .iframe-wrap{
+  pointer-events: none
+ }
 }
 </style>

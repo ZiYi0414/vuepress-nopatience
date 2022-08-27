@@ -34,6 +34,10 @@ export default {
     };
   },
   methods: {
+    sortByDate: function (a, b) {
+      if (a && b) return Date.parse(b) - Date.parse(a);
+      else return;
+    },
     getArticleFn: function () {
       // console.log(this.$site)
       const pages = this.$site.pages;
@@ -42,6 +46,8 @@ export default {
           this.articleList.push(e);
         }
       });
+      this.articleList?.sort((a, b) => this.sortByDate(a?.lastUpdated, b?.lastUpdated));
+      console.log(this.articleList)
     },
   },
   created() {

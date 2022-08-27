@@ -3,9 +3,12 @@ title: "浏览器渲染原理，过程"
 description: "作为前端工程师个人认为学习浏览器的渲染以及运行原理是很必要的。."
 date: "星期四，25日，7月，2021 · 😚"
 type: "blog"
+prev: ./blog/Hello-World
+next: ./Hello-World
+comment: true
 tags:
   - 技术
-  - 开心
+  - 笔记
 ---
 
 # 浏览器渲染原理，过程

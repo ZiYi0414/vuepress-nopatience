@@ -53,7 +53,7 @@ export default {
   margin-bottom: 1.6rem;
 }
 a {
-  color: #000;
+  color: var(--text-color);
 }
 
 @keyframes typing {

@@ -47,7 +47,6 @@ export default {
         }
       });
       this.articleList?.sort((a, b) => this.sortByDate(a?.lastUpdated, b?.lastUpdated));
-      console.log(this.articleList)
     },
   },
   created() {

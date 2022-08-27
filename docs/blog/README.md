@@ -1,5 +1,5 @@
 ---
 blog: true
 title: "BlogList - nopatience"
-description: "我的第三个博客"
+description: "BlogList - nopatience comp sci. cv engineer & visual design enthusiast"
 ---
